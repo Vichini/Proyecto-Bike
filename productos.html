@@ -8,106 +8,242 @@
     <link rel="stylesheet" href="style.css">
 </head>
 <body>
-  
-<!-- Navbar compartida -->
-<header>
-  <nav class="navbar navbar-expand-lg navbar-light bg-light">
-    <div class="container-fluid">
-      <a class="navbar-brand" href="PaginaP.html">MB</a>
-      <button class="navbar-toggler" type="button" data-bs-toggle="collapse" data-bs-target="#navbarSupportedContent" aria-controls="navbarSupportedContent" aria-expanded="false" aria-label="Toggle navigation">
-        <span class="navbar-toggler-icon"></span>
-      </button>
-      <div class="collapse navbar-collapse" id="navbarSupportedContent">
-        <ul class="navbar-nav me-auto mb-2 mb-lg-0">
-          <li class="nav-item dropdown">
-            <a class="nav-link dropdown-toggle" href="#" role="button" data-bs-toggle="dropdown" aria-expanded="false">
-              Cuenta
-            </a>
-            <ul class="dropdown-menu">
-              <li><a class="dropdown-item" href="Crearcuenta.html">Crear cuenta</a></li>
-              <li><a class="dropdown-item" href="login.html">Iniciar Sesion</a></li>
-              <li><a class="dropdown-item" href="#">¿Olvidaste tu contraseña?</a></li>
-            </ul>
-          </li>
-          <li class="nav-item">
-            <a class="nav-link active" aria-current="page" href="productos.html">Catalogo</a>
-          </li>
-          <li class="nav-item">
-            <a class="nav-link active" aria-current="page" href="arriendo.html">Arriendo de bicicletas</a>
-          </li>
-        </ul>
-        <!-- Botón "Carrito" a la derecha del navbar -->
-        <button type="button" class="btn btn-dark" onclick="mostrarMensaje()">Carrito</button>
-      </div>
-    </div>
-  </nav>
-</header>
+    <header>
+        <nav class="navbar navbar-expand-lg navbar-light bg-light">
+          <div class="container-fluid">
+            <a class="navbar-brand" href="PaginaP.html">MB</a>
+            <button class="navbar-toggler" type="button" data-bs-toggle="collapse" data-bs-target="#navbarSupportedContent" aria-controls="navbarSupportedContent" aria-expanded="false" aria-label="Toggle navigation">
+              <span class="navbar-toggler-icon"></span>
+            </button>
+            <div class="collapse navbar-collapse" id="navbarSupportedContent">
+              <ul class="navbar-nav me-auto mb-2 mb-lg-0">
+                <li class="nav-item dropdown">
+                  <a class="nav-link dropdown-toggle" href="#" role="button" data-bs-toggle="dropdown" aria-expanded="false">
+                    Cuenta
+                  </a>
+                  <ul class="dropdown-menu">
+                    <li><a class="dropdown-item" href="Crearcuenta.html">Crear cuenta</a></li>
+                    <li><a class="dropdown-item" href="login.html">Iniciar Sesion</a></li>
+                    <li><a class="dropdown-item" href="#">¿Olvidaste tu contraseña?</a></li>
+                  </ul>
+                </li>
+                <li class="nav-item">
+                  <a class="nav-link active" aria-current="page" href="productos.html">Catalogo</a>
+                </li>
+                <li class="nav-item">
+                  <a class="nav-link active" aria-current="page" href="arriendo.html">Arriendo de bicicletas</a>
+                </li>
+              </ul>
+              <!-- Botón "Carrito" a la derecha del navbar -->
+              <button type="button" class="btn btn-dark" onclick="mostrarMensaje()">Carrito</button>
+            </div>
+          </div>
+        </nav>
+      </header>
 
+  <!-- Contenido de la página -->
   <center>
-    <h1 style="color: white;">Los mejores productos</h1> <!-- Cambia el color del texto a blanco -->
+    <h1 style="color: white;">Nuestros Productos</h1> <!-- Cambia el color del texto a blanco -->
   </center>
   <div class="container">
     <div class="row justify-content-center">
-      <!-- Tarjetas de productos -->
+      <!-- Tarjeta 1: Bicicleta de Montaña -->
       <div class="col-md-4 mb-4">
         <div class="card" style="width: 18rem;">
-          <img src="img/bicicleta 1.webp" class="card-img-top" alt="Bicicleta Falcon Turquesa">
+          <img src="img/bicicleta 1.webp" class="card-img-top" alt="Bicicleta de Montaña">
           <div class="card-body">
-            <h5 class="card-title">Falcon Turquesa</h5>
-            <p class="card-text">Bicicleta apta para el día en ciudad y ciclovías que necesita poca mantención.</p>
-            <a href="#" class="btn btn-primary">Comprar</a>
+            <h5 class="card-title">Bicicleta de Montaña</h5>
+            <p class="card-text">Bicicleta diseñada para terrenos difíciles y aventuras off-road.</p>
+            <button type="button" class="btn btn-primary" data-bs-toggle="modal" data-bs-target="#modal1">
+              Comprar
+            </button>
           </div>
         </div>
       </div>
+
+      <!-- Tarjeta 2: Bicicleta Urbana -->
       <div class="col-md-4 mb-4">
         <div class="card" style="width: 18rem;">
-          <img src="img/bicicleta-2.webp" class="card-img-top" alt="Bicicleta Roja">
+          <img src="img/bicicleta-2.webp" class="card-img-top" alt="Bicicleta Urbana">
           <div class="card-body">
-            <h5 class="card-title">Bicicleta Roja</h5>
-            <p class="card-text">Bicicleta todoterreno, apta para el deporte.</p>
-            <a href="#" class="btn btn-primary">Comprar</a>
+            <h5 class="card-title">Bicicleta Urbana</h5>
+            <p class="card-text">Bicicleta perfecta para la ciudad y desplazamientos diarios.</p>
+            <button type="button" class="btn btn-primary" data-bs-toggle="modal" data-bs-target="#modal2">
+              Comprar
+            </button>
           </div>
         </div>
       </div>
+
+      <!-- Tarjeta 3: Bicicleta Infantil -->
       <div class="col-md-4 mb-4">
         <div class="card" style="width: 18rem;">
           <img src="img/bicicleta-3.webp" class="card-img-top" alt="Bicicleta Infantil">
           <div class="card-body">
             <h5 class="card-title">Bicicleta Infantil</h5>
-            <p class="card-text">Bicicleta para niños, la mejor primera bicicleta que alguien podría tener.</p>
-            <a href="#" class="btn btn-primary">Comprar</a>
+            <p class="card-text">La mejor primera bicicleta que alguien podría tener.</p>
+            <button type="button" class="btn btn-primary" data-bs-toggle="modal" data-bs-target="#modal3">
+              Comprar
+            </button>
           </div>
         </div>
       </div>
-      <!-- Otros 3 productos -->
+
+      <!-- Tarjeta 4: Pedales -->
       <div class="col-md-4 mb-4">
         <div class="card" style="width: 18rem;">
-          <img src="img/pedales.webp" class="card-img-top" alt="Pedales Bicicleta">
+          <img src="img/pedales.webp" class="card-img-top" alt="Pedales">
           <div class="card-body">
-            <h5 class="card-title">Pedales Bicicleta</h5>
-            <p class="card-text">Repuesto de pedales duraderos</p>
-            <a href="#" class="btn btn-primary">Comprar</a>
+            <h5 class="card-title">Pedales</h5>
+            <p class="card-text">Pedales de alta calidad para un pedaleo suave y eficiente.</p>
+            <button type="button" class="btn btn-primary" data-bs-toggle="modal" data-bs-target="#modal4">
+              Comprar
+            </button>
           </div>
         </div>
       </div>
+
+      <!-- Tarjeta 5: Ruedas -->
       <div class="col-md-4 mb-4">
         <div class="card" style="width: 18rem;">
-          <img src="img/ruedas.webp" class="card-img-top" alt="Repuestos de Ruedas">
+          <img src="img/ruedas.webp" class="card-img-top" alt="Ruedas">
           <div class="card-body">
-            <h5 class="card-title">Repuestos de Ruedas</h5>
-            <p class="card-text">Repuestos de ruedas resistentes.</p>
-            <a href="#" class="btn btn-primary">Comprar</a>
+            <h5 class="card-title">Ruedas</h5>
+            <p class="card-text">Ruedas duraderas y ligeras para una conducción suave y rápida.</p>
+            <button type="button" class="btn btn-primary" data-bs-toggle="modal" data-bs-target="#modal5">
+              Comprar
+            </button>
           </div>
         </div>
       </div>
+
+      <!-- Tarjeta 6: Sillín de bicicleta -->
       <div class="col-md-4 mb-4">
         <div class="card" style="width: 18rem;">
-          <img src="img/sillin.webp" class="card-img-top" alt="Sillin negro">
+          <img src="img/sillin.webp" class="card-img-top" alt="Sillín de bicicleta">
           <div class="card-body">
-            <h5 class="card-title">Sillin negro</h5>
-            <p class="card-text">Comodo sillin relleno de espuma</p>
-            <a href="#" class="btn btn-primary">Comprar</a>
+            <h5 class="card-title">Sillín de bicicleta</h5>
+            <p class="card-text">Sillín ergonómico para una posición cómoda y un paseo agradable.</p>
+            <button type="button" class="btn btn-primary" data-bs-toggle="modal" data-bs-target="#modal6">
+              Comprar
+            </button>
           </div>
+        </div>
+      </div>
+
+    </div>
+  </div>
+
+  <!-- Modales -->
+  <!-- Modal 1: Bicicleta de Montaña -->
+  <div class="modal fade" id="modal1" tabindex="-1" aria-labelledby="exampleModalLabel1" aria-hidden="true">
+    <div class="modal-dialog">
+      <div class="modal-content">
+        <div class="modal-header">
+          <h5 class="modal-title" id="exampleModalLabel1">Bicicleta de Montaña</h5>
+          <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close"></button>
+        </div>
+        <div class="modal-body">
+          <p>Agregado al carrito: Bicicleta de Montaña</p>
+        </div>
+        <div class="modal-footer">
+          <button type="button" class="btn btn-secondary" data-bs-dismiss="modal">Cerrar</button>
+          <button type="button" class="btn btn-primary">Ir al Carrito</button>
+        </div>
+      </div>
+    </div>
+  </div>
+
+  <!-- Modal 2: Bicicleta Urbana -->
+  <div class="modal fade" id="modal2" tabindex="-1" aria-labelledby="exampleModalLabel2" aria-hidden="true">
+    <div class="modal-dialog">
+      <div class="modal-content">
+        <div class="modal-header">
+          <h5 class="modal-title" id="exampleModalLabel2">Bicicleta Urbana</h5>
+          <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close"></button>
+        </div>
+        <div class="modal-body">
+          <p>Agregado al carrito: Bicicleta Urbana</p>
+        </div>
+        <div class="modal-footer">
+          <button type="button" class="btn btn-secondary" data-bs-dismiss="modal">Cerrar</button>
+          <button type="button" class="btn btn-primary">Ir al Carrito</button>
+        </div>
+      </div>
+    </div>
+  </div>
+
+  <!-- Modal 3: Bicicleta Infantil -->
+  <div class="modal fade" id="modal3" tabindex="-1" aria-labelledby="exampleModalLabel3" aria-hidden="true">
+    <div class="modal-dialog">
+      <div class="modal-content">
+        <div class="modal-header">
+          <h5 class="modal-title" id="exampleModalLabel3">Bicicleta Infantil</h5>
+          <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close"></button>
+        </div>
+        <div class="modal-body">
+          <p>Agregado al carrito: Bicicleta Infantil</p>
+        </div>
+        <div class="modal-footer">
+          <button type="button" class="btn btn-secondary" data-bs-dismiss="modal">Cerrar</button>
+          <button type="button" class="btn btn-primary">Ir al Carrito</button>
+        </div>
+      </div>
+    </div>
+  </div>
+
+  <!-- Modal 4: Pedales -->
+  <div class="modal fade" id="modal4" tabindex="-1" aria-labelledby="exampleModalLabel4" aria-hidden="true">
+    <div class="modal-dialog">
+      <div class="modal-content">
+        <div class="modal-header">
+          <h5 class="modal-title" id="exampleModalLabel4">Pedales</h5>
+          <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close"></button>
+        </div>
+        <div class="modal-body">
+          <p>Agregado al carrito: Pedales</p>
+        </div>
+        <div class="modal-footer">
+          <button type="button" class="btn btn-secondary" data-bs-dismiss="modal">Cerrar</button>
+          <button type="button" class="btn btn-primary">Ir al Carrito</button>
+        </div>
+      </div>
+    </div>
+  </div>
+
+  <!-- Modal 5: Ruedas -->
+  <div class="modal fade" id="modal5" tabindex="-1" aria-labelledby="exampleModalLabel5" aria-hidden="true">
+    <div class="modal-dialog">
+      <div class="modal-content">
+        <div class="modal-header">
+          <h5 class="modal-title" id="exampleModalLabel5">Ruedas</h5>
+          <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close"></button>
+        </div>
+        <div class="modal-body">
+          <p>Agregado al carrito: Ruedas</p>
+        </div>
+        <div class="modal-footer">
+          <button type="button" class="btn btn-secondary" data-bs-dismiss="modal">Cerrar</button>
+          <button type="button" class="btn btn-primary">Ir al Carrito</button>
+        </div>
+      </div>
+    </div>
+  </div>
+
+  <!-- Modal 6: Sillín de bicicleta -->
+  <div class="modal fade" id="modal6" tabindex="-1" aria-labelledby="exampleModalLabel6" aria-hidden="true">
+    <div class="modal-dialog">
+      <div class="modal-content">
+        <div class="modal-header">
+          <h5 class="modal-title" id="exampleModalLabel6">Sillín de bicicleta</h5>
+          <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close"></button>
+        </div>
+        <div class="modal-body">
+          <p>Agregado al carrito: Sillín de bicicleta</p>
+        </div>
+        <div class="modal-footer">
+          <button type="button" class="btn btn-secondary" data-bs-dismiss="modal">Cerrar</button>
+          <button type="button" class="btn btn-primary">Ir al Carrito</button>
         </div>
       </div>
     </div>
@@ -124,3 +260,4 @@
   <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.3/dist/js/bootstrap.bundle.min.js" integrity="sha384-YvpcrYf0tY3lHB60NNkmXc5s9fDVZLESaAA55NDzOxhy9GkcIdslK1eN7N6jIeHz" crossorigin="anonymous"></script>
 </body>
 </html>
+
