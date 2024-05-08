@@ -1,0 +1,163 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Formulario de Pago</title>
+    <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.3/dist/css/bootstrap.min.css" rel="stylesheet" integrity="sha384-QWTKZyjpPEjISv5WaRU9OFeRpok6YctnYmDr5pNlyT2bRjXh0JMhjY6hW+ALEwIH" crossorigin="anonymous">
+    <link rel="stylesheet" href="style.css">
+</head>
+<body>
+    <header>
+        <nav class="navbar navbar-expand-lg navbar-light bg-light">
+            <div class="container-fluid">
+                <a class="navbar-brand" href="PaginaP.html">MB</a>
+                <button class="navbar-toggler" type="button" data-bs-toggle="collapse" data-bs-target="#navbarSupportedContent" aria-controls="navbarSupportedContent" aria-expanded="false" aria-label="Toggle navigation">
+                    <span class="navbar-toggler-icon"></span>
+                </button>
+                <div class="collapse navbar-collapse" id="navbarSupportedContent">
+                    <ul class="navbar-nav me-auto mb-2 mb-lg-0">
+                        <li class="nav-item dropdown">
+                            <a class="nav-link dropdown-toggle" href="#" role="button" data-bs-toggle="dropdown" aria-expanded="false">
+                                Cuenta
+                            </a>
+                            <ul class="dropdown-menu">
+                                <li><a class="dropdown-item" href="Crearcuenta.html">Crear cuenta</a></li>
+                                <li><a class="dropdown-item" href="login.html">Iniciar Sesion</a></li>
+                                <li><a class="dropdown-item" href="#">¿Olvidaste tu contraseña?</a></li>
+                            </ul>
+                        </li>
+                        <li class="nav-item">
+                            <a class="nav-link active" aria-current="page" href="productos.html">Catalogo</a>
+                        </li>
+                        <li class="nav-item">
+                            <a class="nav-link active" aria-current="page" href="arriendo.html">Arriendo de bicicletas</a>
+                        </li>
+                    </ul>
+                    <!-- Botón "Carrito" a la derecha del navbar -->
+                    <button type="button" class="btn btn-dark" data-bs-toggle="offcanvas" data-bs-target="#offcanvasRight" aria-controls="offcanvasRight">
+                        Carrito
+                    </button>
+                </div>
+            </div>
+        </nav>
+    </header>
+
+    <div class="container">
+        <div class="row justify-content-center">
+            <div class="col-md-6">
+                <h1>Formulario de Pago</h1>
+                <form id="paymentForm" onsubmit="return validatePaymentForm()">
+                    <div class="mb-3">
+                        <label for="cardName" class="form-label">Nombre en la Tarjeta</label>
+                        <input type="text" class="form-control" id="cardName" required>
+                    </div>
+                    <div class="mb-3">
+                        <label for="cardNumber" class="form-label">Número de Tarjeta</label>
+                        <input type="text" class="form-control" id="cardNumber" required>
+                    </div>
+                    <div class="row">
+                        <div class="col-md-6 mb-3">
+                            <label for="expiryDate" class="form-label">Fecha de Vencimiento</label>
+                            <input type="text" class="form-control" id="expiryDate" placeholder="MM/AA" required>
+                        </div>
+                        <div class="col-md-6 mb-3">
+                            <label for="cvv" class="form-label">CVV</label>
+                            <input type="text" class="form-control" id="cvv" required>
+                        </div>
+                    </div>
+                    <div class="mb-3">
+                        <label for="metodo">Método de entrega:</label>
+                        <select class="form-select" id="metodo" onchange="toggleDireccion()">
+                            <option value="">Selecciona una opción</option>
+                            <option value="envio">Envío</option>
+                            <option value="tienda">Retiro en tienda</option>
+                        </select>
+                    </div>
+                    <div id="direccionField" style="display: none;">
+                        <div class="mb-3">
+                            <label for="direccion">Dirección de envío:</label>
+                            <input type="text" class="form-control" id="direccion">
+                        </div>
+                    </div>
+                    <button type="submit" class="btn btn-primary">Pagar</button>
+                </form>
+            </div>
+        </div>
+    </div>
+    
+    <script>
+        function toggleDireccion() {
+            var metodo = document.getElementById("metodo").value;
+            var direccionField = document.getElementById("direccionField");
+    
+            if (metodo === "envio") {
+                direccionField.style.display = "block";
+            } else {
+                direccionField.style.display = "none";
+            }
+        }
+    </script>
+    
+    
+    
+
+    <!-- Scripts de Bootstrap -->
+    <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.3/dist/js/bootstrap.bundle.min.js" integrity="sha384-YvpcrYf0tY3lHB60NNkmXc5s9fDVZLESaAA55NDzOxhy9GkcIdslK1eN7N6jIeHz" crossorigin="anonymous"></script>
+
+    <script>
+        function validatePaymentForm() {
+            // Validar que el campo de nombre en la tarjeta no esté vacío
+            var cardName = document.getElementById("cardName").value;
+            if (cardName.trim() === "") {
+                alert("Por favor ingrese el nombre en la tarjeta.");
+                return false;
+            }
+
+            // Validar el número de tarjeta utilizando el algoritmo de Luhn
+            var cardNumber = document.getElementById("cardNumber").value;
+            if (!luhnCheck(cardNumber)) {
+                alert("El número de tarjeta no es válido.");
+                return false;
+            }
+
+            // Validar la fecha de vencimiento
+            var expiryDate = document.getElementById("expiryDate").value;
+            var today = new Date();
+            var [expiryMonth, expiryYear] = expiryDate.split("/");
+            var expiry = new Date("20" + expiryYear, expiryMonth - 1);
+            if (expiry < today) {
+                alert("La fecha de vencimiento de la tarjeta ha pasado.");
+                return false;
+            }
+
+            // Validar el código CVV
+            var cvv = document.getElementById("cvv").value;
+            if (cvv.length !== 3) {
+                alert("El código CVV debe tener 3 dígitos.");
+                return false;
+            }
+
+            // Si todas las validaciones pasan, el formulario es válido
+            return true;
+        }
+
+        // Función para verificar el número de tarjeta utilizando el algoritmo de Luhn
+        function luhnCheck(cardNumber) {
+            var sum = 0;
+            var doubleUp = false;
+            for (var i = cardNumber.length - 1; i >= 0; i--) {
+                var digit = parseInt(cardNumber.charAt(i));
+                if (doubleUp) {
+                    digit *= 2;
+                    if (digit > 9) digit -= 9;
+                }
+                sum += digit;
+                doubleUp = !doubleUp;
+            }
+            return sum % 10 === 0;
+        }
+    </script>
+</body>
+</html>
+
